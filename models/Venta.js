@@ -15,8 +15,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     monto: DataTypes.DECIMAL(10, 2),
     montoPagado: DataTypes.DECIMAL(10, 2),
-    fecha: DataTypes.DATE,
-    hora: DataTypes.TIME,
+    fecha: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW, // Fecha actual por defecto
+      allowNull: false,
+    },
+    hora: {
+      type: DataTypes.TIME,
+      defaultValue: DataTypes.NOW,
+      allowNull: false,
+    },
     status: DataTypes.STRING,
     observacion: DataTypes.STRING,
     pago: DataTypes.BOOLEAN,

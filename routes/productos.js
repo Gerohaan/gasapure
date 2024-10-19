@@ -15,8 +15,8 @@ router.post(
   '/add',
   auth,
   checkSchema(userSchema),
-  body('email').custom(email => {
-    return userValidator.existsEmail(email)
+  body('nombre').custom(nombre => {
+    return userValidator.existsName(nombre)
   }),
   validator.returnErrors,
   controller.create

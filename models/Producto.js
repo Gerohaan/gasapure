@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     imagen: DataTypes.STRING,
     presentacion: DataTypes.STRING,
     unidadDeMedida: DataTypes.STRING,
+    precio: DataTypes.DECIMAL(10, 2),
     status: DataTypes.ENUM('disponible', 'no_disponible')
   }, {
     tableName: 'productos'

@@ -17,10 +17,14 @@ const checkuser = {
     notEmpty: true,
     errorMessage: 'Unidad de medida no puede estar vacío.'
   },
-  status : {
+  precio : {
+    notEmpty: true,
+    errorMessage: 'Precio no puede estar vacío.'
+  },
+  /* status : {
     notEmpty: true,
     errorMessage: 'Status no puede estar vacío.'
-  }
+  } */
 
 }
 module.exports = checkuser

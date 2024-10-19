@@ -13,18 +13,18 @@ const checkuser = {
     notEmpty: true,
     errorMessage: 'Monto pagado no puede estar vacío.'
   },
-  fecha : {
+  /* fecha : {
     notEmpty: true,
     errorMessage: 'Fecha no puede estar vacío.'
   },
   hora : {
     notEmpty: true,
     errorMessage: 'Hora no puede estar vacío.'
-  },
-  status : {
+  }, */
+ /*  status : {
     notEmpty: true,
     errorMessage: 'Status no puede estar vacío.'
-  },
+  }, */
  /*  observacion  : {
     notEmpty: true,
     errorMessage: 'Id de usuario no puede estar vacío.'

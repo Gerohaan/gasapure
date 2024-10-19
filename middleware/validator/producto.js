@@ -1,12 +1,12 @@
 const producto = require('../../services/productos')
 
 class productoValidator {
-    existsEmail = email => {
+    existsName = nombre => {
         return producto.getOne({
-                email
+                nombre
             })
-            .then(user => {
-                return user === null ? true : Promise.reject('El correo '+email+' existe en la base de datos')
+            .then(product => {
+                return product === null ? true : Promise.reject('El nombre '+nombre+' existe en la base de datos')
             })
     }
 
@@ -14,8 +14,8 @@ class productoValidator {
         return producto.getOne({
                 id
             })
-            .then(user => {
-                return user !== null ? true : Promise.reject('El id no corresponde a ningún producto registrado')
+            .then(product => {
+                return product !== null ? true : Promise.reject('El id no corresponde a ningún producto registrado')
             })
     }
 }

@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     cantidad: DataTypes.INTEGER,
     fecha: DataTypes.DATEONLY,
     hora: DataTypes.TIME,
-    precio: DataTypes.DECIMAL(10, 2)
+    total: DataTypes.DECIMAL(10, 2)
   }, {
     tableName: 'detalleVenta'
   });

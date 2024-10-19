@@ -1,12 +1,12 @@
 const ventas = require('../../services/ventas')
 
 class ventasValidator {
-    existsEmail = email => {
+    existsRef = referencia => {
         return ventas.getOne({
-                email
+                referencia
             })
             .then(user => {
-                return user === null ? true : Promise.reject('El correo '+email+' existe en la base de datos')
+                return user === null ? true : Promise.reject('La referencia '+referencia+' existe en la base de datos')
             })
     }
 
