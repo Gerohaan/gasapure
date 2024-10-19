@@ -13,6 +13,7 @@ var indexRouter = require('./routes/index')
 var userRouter = require('./routes/user')
 var userClientRouter = require('./routes/userClient')
 var infoComercianteRouter = require('./routes/infoComerciante')
+var infoParticularRouter = require('./routes/infoParticular')
 /*var subjectRouter = require('./routes/subject')
 var studentRouter = require('./routes/student')
 var sectionRouter = require('./routes/section')
@@ -43,6 +44,7 @@ app.use('/', indexRouter)
 app.use('/user', userRouter)
 app.use('/userClient', userClientRouter)
 app.use('/infoComerciante', infoComercianteRouter)
+app.use('/infoParticular', infoParticularRouter)
 //Rutas use
 
 app.listen(app.get('port'), function () {
