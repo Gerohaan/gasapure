@@ -1,8 +1,8 @@
-const ventas = require('../../services/ventas')
+const producto = require('../../services/productos')
 
-class ventasValidator {
+class productoValidator {
     existsEmail = email => {
-        return ventas.getOne({
+        return producto.getOne({
                 email
             })
             .then(user => {
@@ -11,12 +11,12 @@ class ventasValidator {
     }
 
     exists = id => {
-        return ventas.getOne({
+        return producto.getOne({
                 id
             })
             .then(user => {
-                return user !== null ? true : Promise.reject('El id no corresponde a ningúna venta registrada')
+                return user !== null ? true : Promise.reject('El id no corresponde a ningún producto registrado')
             })
     }
 }
-module.exports = new ventasValidator()
+module.exports = new productoValidator()

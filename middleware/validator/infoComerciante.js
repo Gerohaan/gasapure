@@ -15,7 +15,7 @@ class infoComercianteValidator {
                 id
             })
             .then(user => {
-                return user !== null ? true : Promise.reject('El id no corresponde a ningún usuario registrado')
+                return user !== null ? true : Promise.reject('El id no corresponde a ningún comerciante registrado')
             })
     }
 }

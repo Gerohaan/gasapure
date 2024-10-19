@@ -15,6 +15,8 @@ var userClientRouter = require('./routes/userClient')
 var infoComercianteRouter = require('./routes/infoComerciante')
 var infoParticularRouter = require('./routes/infoParticular')
 var ventas = require('./routes/ventas')
+var detalleVentas = require('./routes/detalleVentas')
+var productos = require('./routes/productos')
 //configuracion
 app.set('port', process.env.PORT || 3000)
 app.use(express.json())
@@ -42,6 +44,8 @@ app.use('/userClient', userClientRouter)
 app.use('/infoComerciante', infoComercianteRouter)
 app.use('/infoParticular', infoParticularRouter)
 app.use('/ventas', ventas)
+app.use('/detalleVentas', detalleVentas) 
+app.use('/productos', productos) 
 //Rutas use
 
 app.listen(app.get('port'), function () {
