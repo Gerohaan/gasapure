@@ -12,8 +12,8 @@ require('dotenv').config();
 var indexRouter = require('./routes/index')
 var userRouter = require('./routes/user')
 var userClientRouter = require('./routes/userClient')
-/*var teacherRouter = require('./routes/teacher')
-var subjectRouter = require('./routes/subject')
+var infoComercianteRouter = require('./routes/infoComerciante')
+/*var subjectRouter = require('./routes/subject')
 var studentRouter = require('./routes/student')
 var sectionRouter = require('./routes/section')
 var lapsesRouter = require('./routes/lapses')
@@ -42,12 +42,7 @@ app.use(cookieParser())
 app.use('/', indexRouter)
 app.use('/user', userRouter)
 app.use('/userClient', userClientRouter)
-/* app.use('/teacher', teacherRouter)
-app.use('/subject', subjectRouter)
-app.use('/student', studentRouter)
-app.use('/section', sectionRouter),
-app.use('/lapses', lapsesRouter),
-app.use('/grades', gradesRouter) */
+app.use('/infoComerciante', infoComercianteRouter)
 //Rutas use
 
 app.listen(app.get('port'), function () {
