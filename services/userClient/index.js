@@ -1,7 +1,7 @@
-const { User } = require('../../models/index')
+const { UserClient } = require('../../models/index')
 
 async function store (params) {
-  return await User
+  return await UserClient
     .create({
       ...params
     })
@@ -11,11 +11,11 @@ async function store (params) {
 }
 
 async function getAll (filters) {
-  return User.findAll({
+  return UserClient.findAll({
     where: { ...filters },
     include: [
       {
-        association: "rol"
+        association: 'rol'
       }
     ]
   }).catch(error => {
@@ -25,7 +25,7 @@ async function getAll (filters) {
 }
 
 async function update (params, filters) {
-  return User.update(params, {
+  return UserClient.update(params, {
     where: {
       ...filters
     }
@@ -36,7 +36,9 @@ async function update (params, filters) {
 
 
 async function getOne (filters) {
-  return User
+  console.log(filters);
+  
+  return UserClient
     .findOne({
       where: { ...filters }
     })
@@ -48,7 +50,7 @@ async function getOne (filters) {
 
 async function destroy (filters) {
   try {
-    return User.destroy({
+    return UserClient.destroy({
       where: { ...filters }
     })
   } catch (error) {

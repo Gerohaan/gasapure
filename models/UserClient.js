@@ -1,18 +1,54 @@
-// models/UserClient.js
+// models/userClient.js
+'use strict';
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  const UserClient = sequelize.define('UserClient', {
+  class UserClient extends Model {
+    static associate(models) {
+      // define association here
+      UserClient.belongsTo(models.Role, { as: "rol", foreignKey: "idRol" });
+    }
+  }
+  
+  UserClient.init({
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    email: DataTypes.STRING,
-    tipo: DataTypes.STRING,
-    userName: DataTypes.STRING,
-    status: DataTypes.BOOLEAN,
-    password: DataTypes.STRING
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    tipo: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    idRol: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Role', // Refers to table name
+        key: 'id',
+      },
+      allowNull: true,
+    },
   }, {
-    tableName: 'usersClient'
+    sequelize,
+    modelName: 'UserClient',
+    tableName: 'usersclients', // Usa el nombre correcto de la tabla
+    timestamps: true,
   });
 
   return UserClient;

@@ -11,6 +11,7 @@ require('dotenv').config();
 // Rutas
 var indexRouter = require('./routes/index')
 var userRouter = require('./routes/user')
+var userClientRouter = require('./routes/userClient')
 /*var teacherRouter = require('./routes/teacher')
 var subjectRouter = require('./routes/subject')
 var studentRouter = require('./routes/student')
@@ -40,6 +41,7 @@ app.use(cookieParser())
 //Rutas use
 app.use('/', indexRouter)
 app.use('/user', userRouter)
+app.use('/userClient', userClientRouter)
 /* app.use('/teacher', teacherRouter)
 app.use('/subject', subjectRouter)
 app.use('/student', studentRouter)
