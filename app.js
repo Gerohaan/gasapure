@@ -14,11 +14,7 @@ var userRouter = require('./routes/user')
 var userClientRouter = require('./routes/userClient')
 var infoComercianteRouter = require('./routes/infoComerciante')
 var infoParticularRouter = require('./routes/infoParticular')
-/*var subjectRouter = require('./routes/subject')
-var studentRouter = require('./routes/student')
-var sectionRouter = require('./routes/section')
-var lapsesRouter = require('./routes/lapses')
-var gradesRouter = require('./routes/grades') */
+var ventas = require('./routes/ventas')
 //configuracion
 app.set('port', process.env.PORT || 3000)
 app.use(express.json())
@@ -45,6 +41,7 @@ app.use('/user', userRouter)
 app.use('/userClient', userClientRouter)
 app.use('/infoComerciante', infoComercianteRouter)
 app.use('/infoParticular', infoParticularRouter)
+app.use('/ventas', ventas)
 //Rutas use
 
 app.listen(app.get('port'), function () {
