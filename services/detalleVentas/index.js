@@ -12,7 +12,15 @@ async function store (params) {
 
 async function getAll (filters) {
   return DetalleVenta.findAll({
-    where: { ...filters }
+    where: { ...filters },
+    include: [
+      {
+        association: "venta"
+      },
+      {
+        association: "producto"
+      }
+    ]
   }).catch(error => {
     //console.log(error)
     return Promise.reject(error)

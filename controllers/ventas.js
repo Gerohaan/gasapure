@@ -1,19 +1,49 @@
 const ventas = require('../services/ventas')
-
+const detalleVentas = require('../services/detalleVentas')
+const sendMail = require('../utils/sendMail')
 class ventasController {
 
+  async create (req, res, next) {
+    try {
+      const body = req.body
+      const items = req.body.items
+      let storeVenta = await ventas.store(body)
+      if(storeVenta){
+        let idStoreVenta = await storeVenta.id
+        items.map(async item => {
+          let saveItem = {
+            idVenta: idStoreVenta,
+            idProducto: item.idProducto,
+            cantidad: item.cantidad,
+            total: item.total
+          }
+          await detalleVentas.store(saveItem)
+        })
+        // Datos del cliente y administrador
+        const clienteEmail = 'gero.delfin@gmail.com';
+        const adminEmail = 'gero.delfin@gmail.com';  // Cambia esto por el correo del administrador
 
-  create = (req, res, next) => {
+        // Enviar correo al cliente y al admin
+        sendMail.sendMail(clienteEmail, 'Gracias por tu compra', 'Tu compra ha sido registrada correctamente, le avisaremos cuando su.');
+        sendMail.sendMail(adminEmail, 'Nueva venta registrada', `Se ha registrado una nueva venta con el ID: ${storeVenta.id}`);
+        return res.status(200).json(storeVenta)
+      }
+      } catch (err) {
+      res.status(400).send(err)
+    }
+  }
+
+ /*  create = (req, res, next) => {
     return ventas
       .store(req.body)
       .then(info => {
         return res.status(200).json(info)
-      }) /* .catch((error) => errors.response(error)) */
+      })
       .catch(err => {
-        //console.log(err);
+        
         res.status(400).send(err)
       })
-  }
+  } */
 
   list = (req, res, next) => {
     return ventas

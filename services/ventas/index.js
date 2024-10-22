@@ -12,7 +12,12 @@ async function store (params) {
 
 async function getAll (filters) {
   return Venta.findAll({
-    where: { ...filters }
+    where: { ...filters },
+    include: [
+      {
+        association: "userClient"
+      }
+    ]
   }).catch(error => {
     //console.log(error)
     return Promise.reject(error)

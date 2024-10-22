@@ -1,11 +1,11 @@
 const { check, body, checkSchema } = require('express-validator')
 
 const checkuser = {
-  ideVenta  : {
+  idVenta: {
     notEmpty: true,
     errorMessage: 'Id de venta no puede estar vacío.'
   },
-  idProducto : {
+  idProducto: {
     notEmpty: true,
     errorMessage: 'idProducto no puede estar vacío.'
   },
@@ -13,22 +13,18 @@ const checkuser = {
     notEmpty: true,
     errorMessage: 'Cantidad no puede estar vacío.'
   },
-  fecha : {
+  /* fecha : {
     notEmpty: true,
     errorMessage: 'Fecha no puede estar vacío.'
   },
   hora : {
     notEmpty: true,
     errorMessage: 'Hora no puede estar vacío.'
-  },
-  status : {
+  }, */
+  total : {
     notEmpty: true,
-    errorMessage: 'Status no puede estar vacío.'
-  },
-  precio : {
-    notEmpty: true,
-    errorMessage: 'Precio no puede estar vacío.'
-  },
+    errorMessage: 'Total no puede estar vacío.'
+  }
 
 }
 module.exports = checkuser

@@ -1,7 +1,7 @@
 const { check, body, checkSchema } = require('express-validator')
 
 const checkuser = {
-  idUserClient  : {
+  idUserClient: {
     notEmpty: true,
     errorMessage: 'Cliente no puede estar vacío.'
   },
@@ -12,6 +12,10 @@ const checkuser = {
   montoPagado: {
     notEmpty: true,
     errorMessage: 'Monto pagado no puede estar vacío.'
+  },
+  items: {
+    notEmpty: true,
+    errorMessage: 'Items no puede estar vacío.'
   },
   /* fecha : {
     notEmpty: true,
