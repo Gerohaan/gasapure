@@ -20,9 +20,8 @@ class ventasController {
           await detalleVentas.store(saveItem)
         })
         // Datos del cliente y administrador
-        const clienteEmail = 'gero.delfin@gmail.com';
+        const clienteEmail = body.emailClient;
         const adminEmail = 'gero.delfin@gmail.com';  // Cambia esto por el correo del administrador
-
         // Enviar correo al cliente y al admin
         sendMail.sendMail(clienteEmail, 'Gracias por tu compra', 'Tu compra ha sido registrada correctamente, le avisaremos cuando sea confirmada por nuestros administradores.');
         sendMail.sendMail(adminEmail, 'Nueva venta registrada', `Se ha registrado una nueva venta con el ID: ${storeVenta.id} y Número de referencia: ${storeVenta.referencia}`);
