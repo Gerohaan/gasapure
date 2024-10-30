@@ -33,6 +33,11 @@ class ventasController {
     }
   }
 
+  async upload (req, res, next) {
+    console.log(req.file);
+    
+  }
+
  /*  create = (req, res, next) => {
     return ventas
       .store(req.body)
