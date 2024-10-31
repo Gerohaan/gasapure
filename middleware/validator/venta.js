@@ -1,5 +1,5 @@
 const ventas = require('../../services/ventas')
-
+const detallesVenta = require('../../services/detalleVentas')
 class ventasValidator {
     existsRef = referencia => {
         return ventas.getOne({
@@ -12,6 +12,15 @@ class ventasValidator {
 
     exists = id => {
         return ventas.getOne({
+                id
+            })
+            .then(user => {
+                return user !== null ? true : Promise.reject('El id no corresponde a ningúna venta registrada')
+            })
+    }
+
+    existsDetail = id => {
+        return detallesVenta.getOne({
                 id
             })
             .then(user => {

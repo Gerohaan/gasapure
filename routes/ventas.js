@@ -53,6 +53,15 @@ router.get(
   validator.returnErrors,
   controller.show
 )
+router.get(
+  '/showDetails/:id',
+  auth,
+  param('id').custom(id => {
+    return userValidator.existsDetail(id)
+  }),
+  validator.returnErrors,
+  controller.showDetails
+)
 router.put(
   '/update/:id',
   auth,

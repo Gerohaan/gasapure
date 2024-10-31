@@ -4,10 +4,12 @@ const cors = require('cors')
 const { sequelize } = require('./models/index')
 const bodyParser = require('body-parser');
 const helmet = require('helmet')
+const path = require('path');
 const compression = require('compression')
 var cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
 require('dotenv').config(); 
+
 // Rutas
 var indexRouter = require('./routes/index')
 var userRouter = require('./routes/user')
@@ -18,6 +20,7 @@ var ventas = require('./routes/ventas')
 var detalleVentas = require('./routes/detalleVentas')
 var productos = require('./routes/productos')
 //configuracion
+
 app.set('port', process.env.PORT || 3000)
 app.use(express.json())
 app.use(
@@ -35,6 +38,7 @@ app.use(cors())
 app.use(compression())
 app.use(helmet())
 app.use(cookieParser())
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 //configuracion
 
 //Rutas use

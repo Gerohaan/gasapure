@@ -67,6 +67,15 @@ class ventasController {
       })
   }
 
+  async showDetails (req, res, next) {
+    try {
+      let detailsSales = await detalleVentas.getAll(req.param)
+      return res.status(200).json(detailsSales)
+    } catch (error) {
+      return res.status(400).send(error)
+    }
+  }
+
   show = (req, res, next) => {
     return ventas
       .getOne({
@@ -81,11 +90,17 @@ class ventasController {
   }
 
   update = (req, res, next) => {
+    const aprobadaV = {...req.body, status: 'pagada'}
     return ventas
-      .update(req.body, {
+      .update(aprobadaV, {
         id: req.params.id
       })
       .then(info => {
+        const clienteEmail = req.body.userClient.email;
+        const adminEmail = 'gero.delfin@gmail.com';  // Cambia esto por el correo del administrador
+        // Enviar correo al cliente y al admin
+        sendMail.sendMail(clienteEmail, 'Su compra ha sido aprobada', `Tu compra ha sido aprobada con la refencia suministrada Num: ${req.body.referencia}.`);
+        sendMail.sendMail(adminEmail, 'Nueva venta aprobada', `Ha sido aprobada con la refencia suministrada Num: ${req.body.referencia}.`);
         return res.status(200).json(info)
       })
       .catch(err => {
