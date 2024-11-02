@@ -1,9 +1,9 @@
-const userClientService = require('../../services/userClient')
+const userService = require('../../services/user')
 const { correo, email } = require('../schema/user')
 
 class userValidator {
     existsEmail = email => {
-        return userClientService.getOne({
+        return userService.getOne({
                 email
             })
             .then(user => {
@@ -12,7 +12,7 @@ class userValidator {
     }
 
     existsEmailLogin = email => {
-        return userClientService.getOne({
+        return userService.getOne({
                 email
             })
             .then(user => {
@@ -21,7 +21,7 @@ class userValidator {
     }
 
     existsPassword = password => {
-        return userClientService.getOne({
+        return userService.getOne({
                 password
             })
             .then(user => {
@@ -30,7 +30,7 @@ class userValidator {
     }
 
     exists = id => {
-        return userClientService.getOne({
+        return userService.getOne({
                 id
             })
             .then(user => {

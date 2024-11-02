@@ -13,21 +13,13 @@ const checkuser = {
     notEmpty: true,
     errorMessage: 'Status No puede estar vacío.'
   },
-  nombres: {
+  tipo: {
     notEmpty: true,
-    errorMessage: 'Nomrbes No puede estar vacío.'
+    errorMessage: 'Tipo No puede estar vacío.'
   },
   userName : {
     notEmpty: true,
-    errorMessage: 'User Name No puede estar vacío.'
-  },
-  rol: {
-    notEmpty: true,
-    errorMessage: 'Rol No puede estar vacío.'
-  },
-  telefono: {
-    notEmpty: true,
-    errorMessage: 'Teléfono No puede estar vacío.'
+    errorMessage: 'Nombre de usuario No puede estar vacío.'
   }
 
 }

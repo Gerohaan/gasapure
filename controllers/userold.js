@@ -1,9 +1,9 @@
-const userClientService = require('../services/userClient')
+const userService = require('../services/user')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
 
-class userClientController {
+class userController {
 
   // Login
    signIn(req, res) {
@@ -11,7 +11,7 @@ class userClientController {
     let { email, password } = req.body;
 
     // Buscar usuario
-    userClientService.getOne({email}).then(user => {
+    userService.getOne({email}).then(user => {
         if (!user) {
             res.status(404).json({ msg: "Correo no corresponde a ningun usuario registrado" })
           } else {
@@ -21,7 +21,7 @@ class userClientController {
                   let token = jwt.sign({ user: user }, authConfig.secret, {
                       expiresIn: authConfig.expires
                   });
-                  
+
                   res.json({
                       user: user,
                       token: token
@@ -63,7 +63,7 @@ class userClientController {
   create = async (req, res, next) => {
     let password = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
     req.body.password = password 
-    await userClientService.store(req.body).then(user => {
+    await userService.store(req.body).then(user => {
       let token = jwt.sign({ user: user }, authConfig.secret, {
           expiresIn: authConfig.expires
       })
@@ -77,7 +77,7 @@ class userClientController {
   }
 
   list = (req, res, next) => {
-    return userClientService
+    return userService
       .getAll()
       .then(user => {
         return res.status(200).json(user)
@@ -88,7 +88,7 @@ class userClientController {
   }
 
   show = (req, res, next) => {
-    return userClientService
+    return userService
       .getOne({
         id: req.params.id
       })
@@ -101,7 +101,7 @@ class userClientController {
   }
 
   update = (req, res, next) => {
-    return userClientService
+    return userService
       .update(req.body, {
         id: req.params.id
       })
@@ -115,10 +115,10 @@ class userClientController {
   
   async update2 (req, res, next) {
     try {
-      await userClientService.update2(req.body, {
+      await userService.update2(req.body, {
         id: req.params.id
       })
-      let data = await userClientService.getOne({
+      let data = await userService.getOne({
         id: req.params.id
       })
       res.status(200).json(data)
@@ -141,4 +141,4 @@ class userClientController {
   }
 }
 
-module.exports = new userClientController()
+module.exports = new userController()

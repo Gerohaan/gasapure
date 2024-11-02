@@ -13,7 +13,6 @@ require('dotenv').config();
 // Rutas
 var indexRouter = require('./routes/index')
 var userRouter = require('./routes/user')
-var userClientRouter = require('./routes/userClient')
 var infoComercianteRouter = require('./routes/infoComerciante')
 var infoParticularRouter = require('./routes/infoParticular')
 var ventas = require('./routes/ventas')
@@ -43,8 +42,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //Rutas use
 app.use('/', indexRouter)
+//app.use('/user', userRouter)
 app.use('/user', userRouter)
-app.use('/userClient', userClientRouter)
 app.use('/infoComerciante', infoComercianteRouter)
 app.use('/infoParticular', infoParticularRouter)
 app.use('/ventas', ventas)

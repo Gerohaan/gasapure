@@ -1,11 +1,12 @@
 var express = require('express')
 var router = express.Router()
-var controller = require('../controllers/userClient')
-var userValidator = require('../middleware/validator/userClient')
-var userSchema = require('../middleware/schema/userClient')
+var controller = require('../controllers/user')
+var userValidator = require('../middleware/validator/user')
+var userSchema = require('../middleware/schema/user')
 var loginSchema = require('../middleware/schema/login')
 const { body,checkSchema, param, validationResult } = require('express-validator')
-const validator = require('../middleware/validator')
+const validator = require('../middleware/validator') // 
+const { correo } = require('../middleware/schema/user')
 const auth = require('../middleware/auth')
 
 router.post('/login',
@@ -29,7 +30,6 @@ router.get('/list',
 
 router.post(
   '/add',
-  auth,
   checkSchema(userSchema),
   body('email').custom(email => {
     return userValidator.existsEmail(email)
@@ -60,7 +60,7 @@ router.delete(
   '/delete/:id',
   auth,
   param('id').custom(id => {
-    return userValidator.exists(id)
+    return personValidator.exists(id)
   }),
   validator.returnErrors,
   controller.delete
