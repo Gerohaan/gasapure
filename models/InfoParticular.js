@@ -6,12 +6,47 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-    nombres: DataTypes.STRING,
-    apellidos: DataTypes.STRING,
-    direccion: DataTypes.STRING,
-    cedula: DataTypes.STRING,
-    telefono: DataTypes.STRING,
-    status: DataTypes.BOOLEAN,
+    nombres: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    apellidos: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    direccion: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    cedula: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    telefono: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    status: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    fechaNacimiento: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    genero: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    nacionalidad: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     idUserClient: {
       type: DataTypes.INTEGER,
       references: {
